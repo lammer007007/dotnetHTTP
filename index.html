@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<head>
+    <title>
+        Сообщения
+    </title>
+</head>
+<body>
+    <h1>
+        Последние пять сообщений
+    </h1>
+    <ul id="list">
+
+    </ul>
+    <script>
+        fetch('/messages')
+        .then(r => r.json())
+        .then(res =>{
+            document.querySelector('#list').innerHTML =
+            res.map(item => `<li>${item.message}</li>`).join(' ');
+        });
+    </script>
+</body>
